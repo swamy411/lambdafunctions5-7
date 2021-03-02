@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  lambdafuunction7:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs14.x
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 3
+      Role: >-
+        arn:aws:iam::217548125364:role/service-role/lambdafuunction7-role-9eayav2f
+      Events:
+        BucketEvent1:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket1
+            Events:
+              - 's3:ObjectCreated:*'
+        Api1:
+          Type: Api
+          Properties:
+            Path: /lambdafuunction7
+            Method: ANY
+  Bucket1:
+    Type: 'AWS::S3::Bucket'
